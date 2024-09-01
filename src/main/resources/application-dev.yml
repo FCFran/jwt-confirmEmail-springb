@@ -1,0 +1,45 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5435/email_social_jwt
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate:
+          format-sql: true
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+#configuration del correo
+  mail:
+    host: localhost
+    port: 1025
+    username: ali #SE PUEDE PONER CUALQUIER INFORMACION
+    password: ali #PUEDES PONERLO NO ES NECESARIO
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enable: true
+          #tiempo de conexion 5seg
+          #timout
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 8640000 #expiration un dia
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
